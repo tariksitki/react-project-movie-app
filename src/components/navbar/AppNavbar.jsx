@@ -1,16 +1,32 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 const AppNavbar = () => {
+  const currentUser = "Felix";
+  // const currentUser = false;
   return (
-      <Navbar bg="dark" variant="dark" className="d-flex justify-content-space-between ">
-          <Navbar.Brand className="ms-5">MOVIE APP</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link >Home</Nav.Link>
-            <Nav.Link >Features</Nav.Link>
-            <Nav.Link >Pricing</Nav.Link>
-          </Nav>
-      </Navbar>
+    <div>
+      <nav className="navbar navbar-expand bg-primary text-white">
+        <div className="container-fluid">
+          <Link to={"/"} className="navbar-brand text-light">
+            React Movie App
+          </Link>
+
+          <div>
+            {currentUser ? (
+              <div className="d-flex align-items-center">
+                <h5 className="me-3 text-capitalize ">{currentUser} </h5>
+                <button className="btn btn-outline-light">LOGOUT </button>
+              </div>
+            ) : (
+              <div className="d-flex align-items-center">
+                <button className="btn btn-outline-light me-3 ">LOGIN</button>
+                <button className="btn btn-outline-light">REGISTER</button>
+              </div>
+            )}
+          </div>
+        </div>
+      </nav>
+    </div>
   );
 };
 
