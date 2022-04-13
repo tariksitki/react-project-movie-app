@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AppNavbar = () => {
+  const navigate = useNavigate();
+
   const currentUser = "Felix";
   // const currentUser = false;
   return (
@@ -19,8 +21,9 @@ const AppNavbar = () => {
               </div>
             ) : (
               <div className="d-flex align-items-center">
-                <button className="btn btn-outline-light me-3 ">LOGIN</button>
-                <button className="btn btn-outline-light">REGISTER</button>
+                <button className="btn btn-outline-light me-3 " onClick={() => navigate("/login")} >LOGIN</button>
+                <button className="btn btn-outline-light" onClick={() => navigate("/register")} >REGISTER</button>
+                {/* Bu islemi link ile de yapabiliriz */}
               </div>
             )}
           </div>
