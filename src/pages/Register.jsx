@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {createUser} from "../auth/Firebase"
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [userData, setUserData] = useState({
     firstName : "",
     lastName : "",
@@ -9,7 +13,8 @@ const Register = () => {
   });
 
   const handleSubmit = () => {
-    console.log(userData);
+    createUser(userData.email, userData.password, navigate);
+    // register olan kisi ayni zamanda login olmus demektir. bu nedenle register olan kisi eger problem yoksa home a yönlendirilir. ama kontrolünü firebase.jsx de yapiyoruz. navigate i buradan props olarak gönderiyoruz.
   }
 
   return (

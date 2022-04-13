@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { logOut } from "../../auth/Firebase";
 
 const AppNavbar = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const AppNavbar = () => {
             {currentUser ? (
               <div className="d-flex align-items-center">
                 <h5 className="me-3 text-capitalize ">{currentUser} </h5>
-                <button className="btn btn-outline-light">LOGOUT </button>
+                <button className="btn btn-outline-light" onClick={logOut}>LOGOUT </button>
               </div>
             ) : (
               <div className="d-flex align-items-center">

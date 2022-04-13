@@ -1,14 +1,17 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { signIn } from "../auth/Firebase"
 
 const Login = () => {
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     email : "",
     password : ""
   });
 
-  const handleSubmit = () => {
-    console.log(userData);
+  const handleSubmit = (e) => {
+    signIn(userData.email, userData.password, navigate);
   }
   return (
     <div className="d-flex">
