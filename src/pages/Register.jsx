@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const Register = () => {
   const [userData, setUserData] = useState({
