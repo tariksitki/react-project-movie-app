@@ -1,7 +1,8 @@
 
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MovieCard from "../components/movieCard/MovieCard";
+import { AuthContext } from "../context/AuthContext";
 
 const Main = () => {
     // buradaki apikeylerimizi context te tutmamiza gerek yok lokalde kullanacagiz
@@ -10,6 +11,8 @@ const Main = () => {
   const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`;
 
   const [movies, setMovies] = useState();
+  const [searchTerm, setSearchTerm] = useState();
+  const {currentUser} = useContext(AuthContext);
 
     // Biz bu func imizin dinamik olmasini istiyoruz. yani icine hangi api yazilirsa o apiden veri ceksin, her api icin ayri bir func yazmayalim istiyoruz. Bu nedenle icine API adinda bir parametre verdik. 
   const getMovie = async (API) => {
@@ -22,7 +25,32 @@ const Main = () => {
       getMovie(FEATURED_API);
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchTerm && currentUser) {
+      getMovie(SEARCH_API + searchTerm)
+    } else if (!currentUser) {
+      alert("Please log in to search")
+    } else {
+      alert("Please enter a text to search")
+    }
+  };
+  // eger user her harf girdiginde arama yapsin istersek direkt olarak onchange e getMovie baglariz.
+
   return (
+    <>
+    <form className="search" onSubmit={handleSubmit}>
+    <input
+      type="search"
+      // search type olmasinin avantaji, giris esnasinda X isareti cikar silmek icin
+      className="search-input"
+      placeholder="Search a movie..."
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+    />
+    <button type="submit">Search</button>
+  </form>
+
     <div className="d-flex flex-wrap">
         {movies?.map((movie) => {
           return (
@@ -30,6 +58,8 @@ const Main = () => {
           )
         })}
     </div>
+    </>
+
   )
 };
 
