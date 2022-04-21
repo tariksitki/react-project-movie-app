@@ -20,7 +20,7 @@ const Register = () => {
   return (
     <div className="d-flex">
       <section className="form-image w-50" >
-          <img src="https://picsum.photos/seed/picsum/700/500" alt="" style={{width : "100%"}} />
+          <img src="https://picsum.photos/seed/picsum/700/500" alt="image" style={{width : "100%"}} />
       </section>
 
       <section className="register-form d-flex flex-column align-items-center justify-content-center w-50" >
@@ -66,4 +66,4 @@ const Register = () => {
 
 export default Register;
 
-// Note: Inputlari da button olarak kullanabiliriz. Bunun icin, input type button olmasi gerekir. ancak söyle bir sikinti var. input alanlarimizi requiered yapmak istiyorsak bu durumda bu calismaz. bu nedenle böyle durumlarda formun onSubmit özelligi kullanilir. bunun sebebi onclick de form submit edilmez 
+// Note: Inputlari da button olarak kullanabiliriz onclick verebiliriz. Bunun icin, input type button olmasi gerekir. ancak söyle bir sikinti var. input alanlarimizi requiered yapmak istiyorsak bu durumda bu calismaz. bu nedenle böyle durumlarda formun onSubmit özelligi kullanilir. bunun sebebi onclick de form submit edilmez 

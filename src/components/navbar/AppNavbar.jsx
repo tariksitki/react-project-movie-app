@@ -4,8 +4,8 @@ import { logOut } from "../../auth/Firebase";
 const AppNavbar = () => {
   const navigate = useNavigate();
 
-  // const currentUser = "Felix";
-  const currentUser = false;
+  const currentUser = "Felix";
+  // const currentUser = false;
   return (
     <div>
       <nav className="navbar navbar-expand bg-primary text-white">
