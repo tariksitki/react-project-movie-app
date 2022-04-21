@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../../auth/Firebase";
+import { AuthContext } from "../../context/AuthContext";
 
 const AppNavbar = () => {
   const navigate = useNavigate();
 
-  const currentUser = "Felix";
-  // const currentUser = false;
+  const {currentUser} = useContext(AuthContext);
+  // currentUser bize google tarafindan her bir kullanici bilgilerini iceren object formatinda gelir. biz kullanmak icin navbar da currentUser?.displayName yaptik
+
   return (
     <div>
       <nav className="navbar navbar-expand bg-primary text-white">
@@ -17,8 +20,8 @@ const AppNavbar = () => {
           <div>
             {currentUser ? (
               <div className="d-flex align-items-center">
-                <h5 className="me-3 text-capitalize ">{currentUser} </h5>
-                <button className="btn btn-outline-light" onClick={logOut}>LOGOUT </button>
+                <h5 className="me-3 text-capitalize ">{currentUser?.displayName} </h5>
+                <button className="btn btn-outline-light" onClick={() => logOut(navigate)}>LOGOUT </button>
               </div>
             ) : (
               <div className="d-flex align-items-center">

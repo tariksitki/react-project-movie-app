@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signIn } from "../auth/Firebase"
+import { signUpProvider } from "../auth/Firebase";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,6 +13,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     signIn(userData.email, userData.password, navigate);
+  }
+
+  const handleGoogleSignIn = () => {
+    signUpProvider(navigate);
   }
   return (
     <div className="d-flex">
@@ -46,10 +51,10 @@ const Login = () => {
               
           </form>
 
-          <button className="btn btn-primary mt-5">Continue With Google</button>
+          <button className="btn btn-primary mt-5" onClick={handleGoogleSignIn} >Continue With Google</button>
       </section>
     </div>
   )
 }
 
-export default Login
+export default Login;
