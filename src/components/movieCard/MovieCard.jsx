@@ -16,7 +16,7 @@ const MovieCard = ({id, title, poster_path, overview, vote_average}) => {
     const navigate = useNavigate();
 
   return (
-    <div className="movie" onClick={() => navigate(`details/${id}`) } >
+    <div className="movie" onClick={() => currentUser ? navigate(`details/${id}`) : alert("Please Log in to see Details!")} >
         <img src={poster_path ? IMG_API + poster_path : defaultImage} alt="image" />
 
         <div className="d-flex align-items-baseline justify-content-between p-1 text-white">

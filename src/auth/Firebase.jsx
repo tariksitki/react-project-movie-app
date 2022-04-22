@@ -87,6 +87,7 @@ export const logOut = async (navigate) => {
   try {
     signOut(auth);
     alert("Logout Succesfully");
+    navigate("/")
   } catch (error) {
     alert(error);
   }
